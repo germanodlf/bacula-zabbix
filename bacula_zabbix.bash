@@ -6,16 +6,18 @@ baculaJobId="$1"
 # Import configuration file
 source bacula_zabbix.conf
 
-# 
+# Chose which database command to use
 case $baculaDbSgdb in
   P) sql='/usr/bin/psql -U postgres -c' ;;
   M) sql='/usr/bin/mysql -NBe' ;;
   *) exit 1 ;;
 esac
 
+# Get Job type from database then exit if it's not a backup job
 baculaJobType=$($sql "select Type from Job where JobId=$baculaJobId;" $baculaDbName)
 if [ "$baculaJobType" != "B" ] ; then exit 2 ; fi
-  
+
+# Get Job level from database: Full, Differential, or Incremental
 baculaJobLevel=$($sql "select Level from Job where JobId=$baculaJobId;" $baculaDbName)
 case $baculaJobLevel in
   'F') level='full' ;;
@@ -24,6 +26,7 @@ case $baculaJobLevel in
   *)   exit 3 ;;
 esac
 
+# Get Job exit status from database: OK, OK with warnings, or Fail
 baculaJobStatus=$($sql "select JobStatus from Job where JobId=$baculaJobId;" $baculaDbName)
 case $baculaJobStatus in
   "T") status=0 ;;
@@ -31,10 +34,13 @@ case $baculaJobStatus in
   *)   status=2 ;;
 esac
 
+# Get client's name from database
 baculaClientName=$($sql "select Client.Name from Client,Job where Job.ClientId=Client.ClientId and Job.JobId=$baculaJobId;" $baculaDbName)
 
+# Send Job exit status to Zabbix server
 $zabbixSender -z $zabbixSrvAddr -p $zabbixSrvPort -s $baculaClientName -k "bacula.$level.job.status" -o $status
-  
+
+# Get from database the Job's amount bytes transfered and send it to Zabbix server
 baculaJobBytes=$($sql "select JobBytes from Job where JobId=$baculaJobId;" $baculaDbName)
 $zabbixSender -z $zabbixSrvAddr -p $zabbixSrvPort -s $baculaClientName -k "bacula.$level.job.bytes" -o $baculaJobBytes
 
