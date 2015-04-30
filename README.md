@@ -15,10 +15,10 @@ chown root:bacula /etc/bacula/bacula-zabbix.conf
 chmod 640 /etc/bacula/bacula-zabbix.conf
 
 vim /etc/bacula/bacula-dir.conf
-        Messages {
-          Name = Standard
-          mailcommand = "/var/spool/bacula/bacula-zabbix.bash %i"
-          mail = 127.0.0.1 = all, !skipped
-          ...
-        }
+  Messages {
+    Name = Standard
+    mailcommand = "/var/spool/bacula/bacula-zabbix.bash %i"
+    mail = 127.0.0.1 = all, !skipped
+    ...
+  }
 systemctl restart bacula-dir
