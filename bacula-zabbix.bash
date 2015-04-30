@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Import configuration file
-source bacula_zabbix.conf
+source bacula-zabbix.conf
 
 # Test if zabbix_sender exists and execute permission is granted, if not, exit
 if [ ! -x $zabbixSender ] ; then exit 3 ; fi
