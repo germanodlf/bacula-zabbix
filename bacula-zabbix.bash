@@ -3,19 +3,19 @@
 # Import configuration file
 source bacula-zabbix.conf
 
+# Get Job ID from parameter
+baculaJobId="$1"
+if [ -z $baculaJobId ] ; then exit 3 ; fi
+
 # Test if zabbix_sender exists and execute permission is granted, if not, exit
-if [ ! -x $zabbixSender ] ; then exit 3 ; fi
+if [ ! -x $zabbixSender ] ; then exit 5 ; fi
 
 # Chose which database command to use
 case $baculaDbSgdb in
   P) sql="PGPASSWORD=$baculaDbPass /usr/bin/psql -h$baculaDbAddr -p$baculaDbPort -U$baculaDbUser -d$baculaDbName -c" ;;
   M) sql="/usr/bin/mysql -NB -h$baculaDbAddr -P$baculaDbPort -u$baculaDbUser -p$baculaDbPass -D$baculaDbName -e" ;;
-  *) exit 5 ;;
+  *) exit 7 ;;
 esac
-
-# Get Job ID from parameter
-baculaJobId="$1"
-if [ -z $baculaJobId ] ; then exit 7 ; fi
 
 # Get Job type from database, then if it is a backup job, proceed, if not, exit
 baculaJobType=$($sql "select Type from Job where JobId=$baculaJobId;")
