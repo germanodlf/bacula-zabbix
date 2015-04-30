@@ -3,11 +3,14 @@
 # Import configuration file
 source bacula_zabbix.conf
 
+# Test if zabbix_sender exists and execute permission is granted, if not, exit
+if [ ! -x $zabbixSender ] ; then exit 1 ; fi
+
 # Chose which database command to use
 case $baculaDbSgdb in
   P) sql="PGPASSWORD=$baculaDbPass /usr/bin/psql -h$baculaDbAddr -p$baculaDbPort -U$baculaDbUser -d$baculaDbName -c" ;;
   M) sql="/usr/bin/mysql -NB -h$baculaDbAddr -P$baculaDbPort -u$baculaDbUser -p$baculaDbPass -D$baculaDbName -e" ;;
-  *) exit 1 ;;
+  *) exit 2 ;;
 esac
 
 # Get Job ID from parameter
@@ -15,7 +18,7 @@ baculaJobId="$1"
 
 # Get Job type from database, then if it is a backup job, proceed, if not, exit
 baculaJobType=$($sql "select Type from Job where JobId=$baculaJobId;")
-if [ "$baculaJobType" != "B" ] ; then exit 2 ; fi
+if [ "$baculaJobType" != "B" ] ; then exit 3 ; fi
 
 # Get Job level from database and classify it as Full, Differential, or Incremental
 baculaJobLevel=$($sql "select Level from Job where JobId=$baculaJobId;")
@@ -23,7 +26,7 @@ case $baculaJobLevel in
   'F') level='full' ;;
   'D') level='diff' ;;
   'I') level='incr' ;;
-  *)   exit 3 ;;
+  *)   exit 4 ;;
 esac
 
 # Get Job exit status from database and classify it as OK, OK with warnings, or Fail
