@@ -31,6 +31,7 @@ esac
 
 # Get Job exit status from database and classify it as OK, OK with warnings, or Fail
 baculaJobStatus=$($sql "select JobStatus from Job where JobId=$baculaJobId;")
+if [ -z $baculaJobStatus ] ; then exit 37 ; fi
 case $baculaJobStatus in
   "T") status=0 ;;
   "W") status=1 ;;
