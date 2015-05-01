@@ -1,6 +1,8 @@
-# bacula-zabbix
+# Zabbix monitoring of Bacula's backup jobs and its processes
 
-Simple bash script and template to monitor jobs exit codes from Bacula on Zabbix.
+Mainly composed by:
+- A bash script that reads values from Bacula Catalog and sends to Zabbix;
+- A Zabbix template with items and other configurations to receive the values, start alerts and generate graphs.
 
 Versions used:
 - Bacula 7.0.5
