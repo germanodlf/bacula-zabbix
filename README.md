@@ -44,9 +44,10 @@ This project is mainly composed by a bash script and a Zabbix template. The bash
   - Backup Incremental OK: Receives the value of incremental jobs' exit status
   - Backup Incremental Speed: Receives the value of incremental jobs' transfer rate in KB/s
   - Backup Incremental Time: Receives the value of incremental jobs' compression rate in %
-  - Bacula Director is running: 
-  - Bacula File is running:
-  - Bacula Storage is running:
+  - Bacula Director is running: Get the bacula-dir process status
+  - Bacula Storage is running: Get the bacula-sd process status
+  - Bacula File is running: Get the bacula-fd process status
+
 - Triggers
   - 
 
