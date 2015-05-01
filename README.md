@@ -8,7 +8,7 @@ Versions used:
 - Bacula 7.0.5
 - Zabbix 2.4.5
 
-## Abilities
+### Abilities
 
 - Customizable and easy to set up
 - Separate monitoring for each backup job
@@ -18,9 +18,9 @@ Versions used:
 - Screens with graphs ready for display
 - Works with MySQL and PostgreSQL used by Bacula Catalog
 
-## Features
+### Features
 
-### Data collected by script and sent to Zabbix
+##### Data collected by script and sent to Zabbix
 
 - Job exit status
 - Number of bytes transferred by the job
@@ -29,7 +29,7 @@ Versions used:
 - Job transfer rate
 - Job compression rate
 
-### Zabbix template configuration
+##### Zabbix template configuration
 
 - Items
   - Backup Full Bytes: Receives the value of bytes transferred by full jobs
@@ -56,7 +56,7 @@ Versions used:
 - Triggers
   - 
 
-## Requirements
+### Requirements
 
 ```
 vim /var/spool/bacula/bacula-zabbix.bash
