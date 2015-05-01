@@ -2,8 +2,6 @@
 
 This project is mainly composed by a bash script and a Zabbix template. The bash script reads values from Bacula Catalog and sends it to Zabbix Server. While the Zabbix template has items and other configurations that receive this values, start alerts and generate graphs and screens. This material was created using Bacula at 7.0.5 version and Zabbix at 2.4.5 version in a GNU/Linux CentOS 7 operational system.
 
-> Block
-
 ### Abilities
 
 - Customizable and easy to set up
@@ -59,6 +57,24 @@ This project is mainly composed by a bash script and a Zabbix template. The bash
   - *Bacula Director is DOWN in {HOST.NAME}*: Starts a disaster severity alert when the bacula-dir process goes down
   - *Bacula Storage is DOWN in {HOST.NAME}*: Starts a disaster severity alert when the bacula-sd process goes down
   - *Bacula File is DOWN in {HOST.NAME}*: Starts a high severity alert when the bacula-fd process goes down
+
+- **Graphs**
+
+  - *Backup Full - Bytes transferred*: Displays a graph with the variation of the bytes transferred by full jobs, faced with the variation of the exit status of these jobs
+  - *Backup Full - Compression rate*: 
+  - *Backup Full - Elapsed time*: 
+  - *Backup Full - Files transferred*: Displays a graph with the variation of the files transferred by full jobs, faced with the variation of the exit status of these jobs
+  - *Backup Full - Transfer rate*: 
+  - *Backup Differential - Bytes transferred*: Displays a graph with the variation of the bytes transferred by differential jobs, faced with the variation of the exit status of these jobs
+  - *Backup Differential - Compression rate*: 
+  - *Backup Differential - Elapsed time*: 
+  - *Backup Differential - Files transferred*: Displays a graph with the variation of the files transferred by differential jobs, faced with the variation of the exit status of these jobs
+  - *Backup Differential - Transfer rate*: 
+  - *Backup Incremental - Bytes transferred*: Displays a graph with the variation of the bytes transferred by incremental jobs, faced with the variation of the exit status of these jobs
+  - *Backup Incremental - Compression rate*: 
+  - *Backup Incremental - Elapsed time*: 
+  - *Backup Incremental - Files transferred*: Displays a graph with the variation of the files transferred by incremental jobs, faced with the variation of the exit status of these jobs
+  - *Backup Incremental - Transfer rate*: 
 
 ### Requirements
 
