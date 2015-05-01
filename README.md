@@ -7,7 +7,9 @@ Versions used:
 - Zabbix 2.4.5
 
 vim /var/spool/bacula/bacula-zabbix.bash
+
 chown bacula:bacula /var/spool/bacula/bacula-zabbix.bash
+
 chmod 700 /var/spool/bacula/bacula-zabbix.bash
 
 vim /etc/bacula/bacula-zabbix.conf
