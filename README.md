@@ -19,7 +19,7 @@ This project is mainly composed by a bash script and a Zabbix template. The bash
 - Job exit status
 - Number of bytes transferred by the job
 - Number of files transferred by the job
-- Time spent by the job
+- Time elapsed by the job
 - Job transfer rate
 - Job compression rate
 
@@ -27,27 +27,20 @@ This project is mainly composed by a bash script and a Zabbix template. The bash
 
 - **Items**
 
-  - *Backup Full Bytes*: Receives the value of bytes transferred by full jobs
-  - *Backup Full Compression*: Receives the value of full jobs' compression
-  - *Backup Full Files*: Receives the value of files transferred by full jobs
-  - *Backup Full OK*: Receives the value of full jobs' exit status
-  - *Backup Full Speed*: Receives the value of full jobs' transfer rate in KB/s
-  - *Backup Full Time*: Receives the value of full jobs' compression rate in %
-  - *Backup Differential Bytes*: Receives the value of bytes transferred by differential jobs
-  - *Backup Differential Compression*: Receives the value of differential jobs' compression
-  - *Backup Differential Files*: Receives the value of files transferred by differential jobs
-  - *Backup Differential OK*: Receives the value of differential jobs' exit status
-  - *Backup Differential Speed*: Receives the value of differential jobs' transfer rate in KB/s
-  - *Backup Differential Time*: Receives the value of differential jobs' compression rate in %
-  - *Backup Incremental Bytes*: Receives the value of bytes transferred by incremental jobs
-  - *Backup Incremental Compression*: Receives the value of incremental jobs' compression
-  - *Backup Incremental Files*: Receives the value of files transferred by incremental jobs
-  - *Backup Incremental OK*: Receives the value of incremental jobs' exit status
-  - *Backup Incremental Speed*: Receives the value of incremental jobs' transfer rate in KB/s
-  - *Backup Incremental Time*: Receives the value of incremental jobs' compression rate in %
-  - *Bacula Director is running*: Get the bacula-dir process status
-  - *Bacula Storage is running*: Get the bacula-sd process status
-  - *Bacula File is running*: Get the bacula-fd process status
+  This Zabbix template has two types of items, the items to receive data of backup jobs, and the itens to receive data of Bacula's processes. The items that receive data of Bacula's processes are described bellow:
+  
+  - *Bacula Director is running*: Get the Bacula Director process status. The process name is defined by the variable {$BACULA.DIR}, and has its default value as 'bacula-dir'.
+  - *Bacula Storage is running*: Get the Bacula Storage process status. The process name is defined by the variable {$BACULA.SD}, and has its default value as 'bacula-sd'.
+  - *Bacula File is running*: Get the Bacula File process status. The process name is defined by the variable {$BACULA.FD}, and has its default value as 'bacula-fd'.
+
+  The items that receive data of backup jobs are divided into the three backup's levels: Full, Differential and Incremental. For each level there are six items, described below:
+
+  - *Bytes*: Receives the value of bytes transferred by each backup job
+  - *Compression*: Receives the value of compression rate of each backup job
+  - *Files*: Receives the value of files transferred by each backup job
+  - *OK*: Receives the value of exit status of each backup job
+  - *Speed*: Receives the value of transfer rate of each backup job
+  - *Time*: Receives the value of elapsed time of each backup job
 
 - **Triggers**
 
