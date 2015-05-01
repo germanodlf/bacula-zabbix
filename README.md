@@ -51,7 +51,13 @@ This project is mainly composed by a bash script and a Zabbix template. The bash
 
 - Triggers
 
-  - 
+  - Backup Full FAIL in {HOST.NAME}
+    Starts a high severity alert when a full backup job fails
+  - Backup Differential FAIL in {HOST.NAME}
+  - Backup Incremental FAIL in {HOST.NAME}
+  - Bacula Director is DOWN in {HOST.NAME}
+  - Bacula Storage is DOWN in {HOST.NAME}
+  - Bacula File is DOWN in {HOST.NAME}
 
 ### Requirements
 
