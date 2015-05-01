@@ -61,20 +61,26 @@ This project is mainly composed by a bash script and a Zabbix template. The bash
 - **Graphs**
 
   - *Backup Full - Bytes transferred*: Displays a graph with the variation of the bytes transferred by full jobs, faced with the variation of the exit status of these jobs
-  - *Backup Full - Compression rate*: 
-  - *Backup Full - Elapsed time*: 
+  - *Backup Full - Compression rate*: Displays a graph with the variation of the compression rate by full jobs, faced with the variation of the exit status of these jobs
+  - *Backup Full - Elapsed time*: Displays a graph with the variation of the elapsed time by full jobs, faced with the variation of the exit status of these jobs
   - *Backup Full - Files transferred*: Displays a graph with the variation of the files transferred by full jobs, faced with the variation of the exit status of these jobs
-  - *Backup Full - Transfer rate*: 
+  - *Backup Full - Transfer rate*: Displays a graph with the variation of the transfer rate by full jobs, faced with the variation of the exit status of these jobs
   - *Backup Differential - Bytes transferred*: Displays a graph with the variation of the bytes transferred by differential jobs, faced with the variation of the exit status of these jobs
-  - *Backup Differential - Compression rate*: 
-  - *Backup Differential - Elapsed time*: 
+  - *Backup Differential - Compression rate*: Displays a graph with the variation of the compression rate by differential jobs, faced with the variation of the exit status of these jobs
+  - *Backup Differential - Elapsed time*: Displays a graph with the variation of the elapsed time by differential jobs, faced with the variation of the exit status of these jobs
   - *Backup Differential - Files transferred*: Displays a graph with the variation of the files transferred by differential jobs, faced with the variation of the exit status of these jobs
-  - *Backup Differential - Transfer rate*: 
+  - *Backup Differential - Transfer rate*: Displays a graph with the variation of the transfer rate by differential jobs, faced with the variation of the exit status of these jobs
   - *Backup Incremental - Bytes transferred*: Displays a graph with the variation of the bytes transferred by incremental jobs, faced with the variation of the exit status of these jobs
-  - *Backup Incremental - Compression rate*: 
-  - *Backup Incremental - Elapsed time*: 
+  - *Backup Incremental - Compression rate*: Displays a graph with the variation of the compression rate by incremental jobs, faced with the variation of the exit status of these jobs
+  - *Backup Incremental - Elapsed time*: Displays a graph with the variation of the elapsed time by incremental jobs, faced with the variation of the exit status of these jobs
   - *Backup Incremental - Files transferred*: Displays a graph with the variation of the files transferred by incremental jobs, faced with the variation of the exit status of these jobs
-  - *Backup Incremental - Transfer rate*: 
+  - *Backup Incremental - Transfer rate*: Displays a graph with the variation of the transfer rate by incremental jobs, faced with the variation of the exit status of these jobs
+
+- **Screens**
+
+  - *Backup Full*: Displays a screen with the five graphs of the full jobs
+  - *Backup Differential*: Displays a screen with the five graphs of the differential jobs
+  - *Backup Incremental*: Displays a screen with the five graphs of the incremental jobs
 
 ### Requirements
 
