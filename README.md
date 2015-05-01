@@ -26,18 +26,21 @@ This project is mainly composed by a bash script and a Zabbix template. The bash
 ##### Zabbix template configuration
 
 - Items
+
   - Backup Full Bytes: Receives the value of bytes transferred by full jobs
   - Backup Full Compression: Receives the value of full jobs' compression
   - Backup Full Files: Receives the value of files transferred by full jobs
   - Backup Full OK: Receives the value of full jobs' exit status
   - Backup Full Speed: Receives the value of full jobs' transfer rate in KB/s
   - Backup Full Time: Receives the value of full jobs' compression rate in %
+
   - Backup Differential Bytes: Receives the value of bytes transferred by differential jobs
   - Backup Differential Compression: Receives the value of differential jobs' compression
   - Backup Differential Files: Receives the value of files transferred by differential jobs
   - Backup Differential OK: Receives the value of differential jobs' exit status
   - Backup Differential Speed: Receives the value of differential jobs' transfer rate in KB/s
   - Backup Differential Time: Receives the value of differential jobs' compression rate in %
+
   - Backup Incremental Bytes: Receives the value of bytes transferred by incremental jobs
   - Backup Incremental Compression: Receives the value of incremental jobs' compression
   - Backup Incremental Files: Receives the value of files transferred by incremental jobs
@@ -49,6 +52,7 @@ This project is mainly composed by a bash script and a Zabbix template. The bash
   - Bacula File is running: Get the bacula-fd process status
 
 - Triggers
+
   - 
 
 ### Requirements
