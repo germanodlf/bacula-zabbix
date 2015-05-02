@@ -7,7 +7,7 @@ This project is mainly composed by a bash script and a Zabbix template. The bash
 - Customizable and easy to set up
 - Separate monitoring for each backup job
 - Different job levels have different severities
-- Monitoring of bacula-dir, bacula-sd and bacula-fd processes
+- Monitoring of Bacula Director, Storage and File processes
 - Generates graphs to follow the data evolution
 - Screens with graphs ready for display
 - Works with MySQL and PostgreSQL used by Bacula Catalog
