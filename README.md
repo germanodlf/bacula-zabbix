@@ -25,9 +25,11 @@ This project is mainly composed by a bash script and a Zabbix template. The bash
 
 ##### Zabbix template configuration
 
+Link this Zabbix template to each host that has a Bacula's backup job implemented. Each host configured in Zabbix with this template linked needs to have its name equals to the name configured in Bacula's Client resource. Otherwise the data collected by the bash script will not be received by Zabbix server.
+
 - **Items**
 
-  This Zabbix template has two types of items, the items to receive data of backup jobs, and the itens to receive data of Bacula's processes. The items that receive data of Bacula's processes are described bellow:
+  This Zabbix template has two types of items, the items to receive data of backup jobs, and the itens to receive data of Bacula's processes. The items that receive data of Bacula's processes are described below:
   
   - *Bacula Director is running*: Get the Bacula Director process status. The process name is defined by the variable {$BACULA.DIR}, and has its default value as 'bacula-dir'. This item needs to be disabled in hosts that are Bacula's clients only.
   - *Bacula Storage is running*: Get the Bacula Storage process status. The process name is defined by the variable {$BACULA.SD}, and has its default value as 'bacula-sd'. This item needs to be disabled in hosts that are Bacula's clients only.
@@ -44,12 +46,17 @@ This project is mainly composed by a bash script and a Zabbix template. The bash
 
 - **Triggers**
 
+  The triggers are configured to identify the host that started the trigger through the variable {HOST.NAME}. In the same way as the items the triggers has two types too, the triggers related to backup jobs, and the triggers related to Bacula's processes. The triggers that are related to Bacula's processes are described below:
+
+  - *Bacula Director is DOWN in {HOST.NAME}*: Starts a disaster severity alert when the Bacula Director process goes down
+  - *Bacula Storage is DOWN in {HOST.NAME}*: Starts a disaster severity alert when the Bacula Storage process goes down
+  - *Bacula File is DOWN in {HOST.NAME}*: Starts a high severity alert when the Bacula File process goes down
+
+  The triggers that are related to backup jobs are described below:
+
   - *Backup Full FAIL in {HOST.NAME}*: Starts a high severity alert when a full backup job fails
   - *Backup Differential FAIL in {HOST.NAME}*: Starts a average severity alert when a differential backup job fails
   - *Backup Incremental FAIL in {HOST.NAME}*: Starts a warning severity alert when a incremental backup job fails
-  - *Bacula Director is DOWN in {HOST.NAME}*: Starts a disaster severity alert when the bacula-dir process goes down
-  - *Bacula Storage is DOWN in {HOST.NAME}*: Starts a disaster severity alert when the bacula-sd process goes down
-  - *Bacula File is DOWN in {HOST.NAME}*: Starts a high severity alert when the bacula-fd process goes down
 
 - **Graphs**
 
