@@ -94,14 +94,14 @@ Link this Zabbix template to each host that has a Bacula's backup job implemente
   ```
 
 3. Edit the Bacula Director configuration file `/etc/bacula/bacula-dir.conf` to start the script at the finish of each job. To do this you need to change the lines described below in the Messages resource that is used by all the configured jobs:
-```
+  ```
   Messages {
     ...
     mailcommand = "/var/spool/bacula/bacula-zabbix.bash %i"
     mail = 127.0.0.1 = all, !skipped
     ...
   }
-```
+  ```
 
 4. Now restart the Bacula Director service. In my case I used this command:
   ```
