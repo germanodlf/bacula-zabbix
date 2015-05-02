@@ -74,9 +74,13 @@ Link this Zabbix template to each host that has a Bacula's backup job implemente
 
 ### Requirements
 
-
+- Bacula's implemented infrastructure and knowledge about it
+- Zabbix's implemented infrastructure and knowledge about it
+- Knowledge about MySQL or PostgreSQL databases
 
 ### Installation
+
+
 
 ```
 vim /var/spool/bacula/bacula-zabbix.bash
