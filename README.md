@@ -87,22 +87,29 @@ Link this Zabbix template to each host that has a Bacula's backup job implemente
   chmod 640 /etc/bacula/bacula-zabbix.conf
   ```
 
-2. 
-```
-vim /var/spool/bacula/bacula-zabbix.bash
-chown bacula:bacula /var/spool/bacula/bacula-zabbix.bash
-chmod 700 /var/spool/bacula/bacula-zabbix.bash
-```
+2. Create the bash script file `/var/spool/bacula/bacula-zabbix.bash` by copying it from this repository and set the permissions as below:
+  ```
+  chown bacula:bacula /var/spool/bacula/bacula-zabbix.bash
+  chmod 700 /var/spool/bacula/bacula-zabbix.bash
+  ```
 
+3. Edit the Bacula Director configuration file `/etc/bacula/bacula-dir.conf` to start the script at the finish of each job. To do this you need to change the lines described below in the Messages resource that is used by all the configured jobs:
 ```
-vim /etc/bacula/bacula-dir.conf
   Messages {
-    Name = Standard
+    ...
     mailcommand = "/var/spool/bacula/bacula-zabbix.bash %i"
     mail = 127.0.0.1 = all, !skipped
     ...
   }
-systemctl restart bacula-dir
 ```
+
+4. Now restart the Bacula Director service. In my case I used this command:
+  ```
+  systemctl restart bacula-dir
+  ```
+
+5. Make a copy of the Zabbix template from this repository and import it to your Zabbix server.
+
+6. Edit your hosts that have configured backup jobs to use this template. Don't forguet to edit the variables with the Bacula's processes names, and to disable in Bacula's clients hosts the items that checks the Bacula Director and Storage processes.
 
 ### Feedback
