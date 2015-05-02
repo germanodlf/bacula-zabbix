@@ -29,8 +29,8 @@ This project is mainly composed by a bash script and a Zabbix template. The bash
 
   This Zabbix template has two types of items, the items to receive data of backup jobs, and the itens to receive data of Bacula's processes. The items that receive data of Bacula's processes are described bellow:
   
-  - *Bacula Director is running*: Get the Bacula Director process status. The process name is defined by the variable {$BACULA.DIR}, and has its default value as 'bacula-dir'.
-  - *Bacula Storage is running*: Get the Bacula Storage process status. The process name is defined by the variable {$BACULA.SD}, and has its default value as 'bacula-sd'.
+  - *Bacula Director is running*: Get the Bacula Director process status. The process name is defined by the variable {$BACULA.DIR}, and has its default value as 'bacula-dir'. This item needs to be disabled in hosts that are Bacula's clients only.
+  - *Bacula Storage is running*: Get the Bacula Storage process status. The process name is defined by the variable {$BACULA.SD}, and has its default value as 'bacula-sd'. This item needs to be disabled in hosts that are Bacula's clients only.
   - *Bacula File is running*: Get the Bacula File process status. The process name is defined by the variable {$BACULA.FD}, and has its default value as 'bacula-fd'.
 
   The items that receive data of backup jobs are divided into the three backup's levels: Full, Differential and Incremental. For each level there are six items, described below:
