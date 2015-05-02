@@ -110,6 +110,11 @@ Link this Zabbix template to each host that has a Bacula's backup job implemente
 
 5. Make a copy of the Zabbix template from this repository and import it to your Zabbix server.
 
-6. Edit your hosts that have configured backup jobs to use this template. Don't forguet to edit the variables with the Bacula's processes names, and to disable in Bacula's clients hosts the items that checks the Bacula Director and Storage processes.
+6. Edit your hosts that have configured backup jobs to use this template. Don't forget to edit the variables with the Bacula's processes names, and to disable in hosts that are only Bacula's clients the items that check the Bacula Director and Storage processes.
+
+### 
+
+
 
 ### Feedback
+
