@@ -70,9 +70,7 @@ Link this Zabbix template to each host that has a Bacula's backup job implemente
 
 - **Screens**
 
-  - *Backup Full*: Displays a screen with the five graphs of the full jobs
-  - *Backup Differential*: Displays a screen with the five graphs of the differential jobs
-  - *Backup Incremental*: Displays a screen with the five graphs of the incremental jobs
+  There are three screens, one for each backup level, that displays the five graphs previously configured for that level.
 
 ### Requirements
 
