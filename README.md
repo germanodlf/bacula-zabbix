@@ -74,6 +74,10 @@ Link this Zabbix template to each host that has a Bacula's backup job implemente
 
 ### Requirements
 
+
+
+### Installation
+
 ```
 vim /var/spool/bacula/bacula-zabbix.bash
 chown bacula:bacula /var/spool/bacula/bacula-zabbix.bash
@@ -96,3 +100,5 @@ vim /etc/bacula/bacula-dir.conf
   }
 systemctl restart bacula-dir
 ```
+
+### Feedback
