@@ -112,9 +112,34 @@ Link this Zabbix template to each host that has a Bacula's backup job implemente
 
 6. Edit your hosts that have configured backup jobs to use this template. Don't forget to edit the variables with the Bacula's processes names, and to disable in hosts that are only Bacula's clients the items that check the Bacula Director and Storage processes.
 
-### 
+### References
 
+- **Bacula**:
 
+  - http://www.bacula.org/7.0.x-manuals/en/main
+  - http://www.bacula.com.br/manual/Messages_Resource.html
+  - http://www.bacula-web.org/docs.html
+  - http://resources.infosecinstitute.com/data-backups-bacula-notifications
+
+- **Zabbix**:
+
+  - http://novatec.com.br/livros/zabbix
+  - http://www.zabbix.org/wiki/InstallOnCentOS_RHEL
+  - https://www.zabbix.com/documentation/2.4/start
+  - http://zabbixoverflow.com/index.php?topic=51.0
+  - https://support.zabbix.com/browse/ZBX-7790
+
+- **Integration**:
+
+  - https://www.zabbix.com/forum/showthread.php?t=8145
+  - http://paje.net.br/?p=472
+  - https://github.com/selivan/bacula_zabbix_integration
 
 ### Feedback
 
+Feel free to send bug reports and feature requests here:
+
+https://github.com/germanodlf/bacula-zabbix/issues
+mail: germanodlf@gmail.com
+
+If you are using this solution in production, please write me about it. It's very important for me to know that my work is not meaningless.
