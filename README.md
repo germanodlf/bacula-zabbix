@@ -139,7 +139,7 @@ Link this Zabbix template to each host that has a Bacula's backup job implemente
 
 Feel free to send bug reports and feature requests here:
 
-https://github.com/germanodlf/bacula-zabbix/issues
-mail: germanodlf@gmail.com
+- https://github.com/germanodlf/bacula-zabbix/issues
+- germanodlf@gmail.com
 
 If you are using this solution in production, please write me about it. It's very important for me to know that my work is not meaningless.
