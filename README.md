@@ -77,21 +77,21 @@ Link this Zabbix template to each host that has a Bacula's backup job implemente
 - Bacula's implemented infrastructure and knowledge about it
 - Zabbix's implemented infrastructure and knowledge about it
 - Knowledge about MySQL or PostgreSQL databases
+- Knowledge about GNU/Linux operational systems
 
 ### Installation
 
+1. Create the configuration file `/etc/bacula/bacula-zabbix.conf` as the sample in this repository, customize it for your infrastructure environment, and set the permissions as below:
+  ```
+  chown root:bacula /etc/bacula/bacula-zabbix.conf
+  chmod 640 /etc/bacula/bacula-zabbix.conf
+  ```
 
-
+2. 
 ```
 vim /var/spool/bacula/bacula-zabbix.bash
 chown bacula:bacula /var/spool/bacula/bacula-zabbix.bash
 chmod 700 /var/spool/bacula/bacula-zabbix.bash
-```
-
-```
-vim /etc/bacula/bacula-zabbix.conf
-chown root:bacula /etc/bacula/bacula-zabbix.conf
-chmod 640 /etc/bacula/bacula-zabbix.conf
 ```
 
 ```
