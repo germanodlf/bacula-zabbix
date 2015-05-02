@@ -35,7 +35,7 @@ Link this Zabbix template to each host that has a Bacula's backup job implemente
   - *Bacula Storage is running*: Get the Bacula Storage process status. The process name is defined by the variable {$BACULA.SD}, and has its default value as 'bacula-sd'. This item needs to be disabled in hosts that are Bacula's clients only.
   - *Bacula File is running*: Get the Bacula File process status. The process name is defined by the variable {$BACULA.FD}, and has its default value as 'bacula-fd'.
 
-  The items that receive data of backup jobs are divided into the three backup's levels: Full, Differential and Incremental. For each level there are six items, described below:
+  The items that receive data of backup jobs are divided into the three backup's levels: Full, Differential and Incremental. For each level there are six items as described below:
 
   - *Bytes*: Receives the value of bytes transferred by each backup job
   - *Compression*: Receives the value of compression rate of each backup job
@@ -46,13 +46,13 @@ Link this Zabbix template to each host that has a Bacula's backup job implemente
 
 - **Triggers**
 
-  The triggers are configured to identify the host that started the trigger through the variable {HOST.NAME}. In the same way as the items the triggers has two types too, the triggers related to backup jobs, and the triggers related to Bacula's processes. The triggers that are related to Bacula's processes are described below:
+  The triggers are configured to identify the host that started the trigger through the variable {HOST.NAME}. In the same way as the items, the triggers has two types too. The triggers that are related to Bacula's processes:
 
   - *Bacula Director is DOWN in {HOST.NAME}*: Starts a disaster severity alert when the Bacula Director process goes down
   - *Bacula Storage is DOWN in {HOST.NAME}*: Starts a disaster severity alert when the Bacula Storage process goes down
   - *Bacula File is DOWN in {HOST.NAME}*: Starts a high severity alert when the Bacula File process goes down
 
-  The triggers that are related to backup jobs are described below:
+  And the triggers that are related to backup jobs:
 
   - *Backup Full FAIL in {HOST.NAME}*: Starts a high severity alert when a full backup job fails
   - *Backup Differential FAIL in {HOST.NAME}*: Starts a average severity alert when a differential backup job fails
@@ -60,21 +60,13 @@ Link this Zabbix template to each host that has a Bacula's backup job implemente
 
 - **Graphs**
 
-  - *Backup Full - Bytes transferred*: Displays a graph with the variation of the bytes transferred by full jobs, faced with the variation of the exit status of these jobs
-  - *Backup Full - Compression rate*: Displays a graph with the variation of the compression rate by full jobs, faced with the variation of the exit status of these jobs
-  - *Backup Full - Elapsed time*: Displays a graph with the variation of the elapsed time by full jobs, faced with the variation of the exit status of these jobs
-  - *Backup Full - Files transferred*: Displays a graph with the variation of the files transferred by full jobs, faced with the variation of the exit status of these jobs
-  - *Backup Full - Transfer rate*: Displays a graph with the variation of the transfer rate by full jobs, faced with the variation of the exit status of these jobs
-  - *Backup Differential - Bytes transferred*: Displays a graph with the variation of the bytes transferred by differential jobs, faced with the variation of the exit status of these jobs
-  - *Backup Differential - Compression rate*: Displays a graph with the variation of the compression rate by differential jobs, faced with the variation of the exit status of these jobs
-  - *Backup Differential - Elapsed time*: Displays a graph with the variation of the elapsed time by differential jobs, faced with the variation of the exit status of these jobs
-  - *Backup Differential - Files transferred*: Displays a graph with the variation of the files transferred by differential jobs, faced with the variation of the exit status of these jobs
-  - *Backup Differential - Transfer rate*: Displays a graph with the variation of the transfer rate by differential jobs, faced with the variation of the exit status of these jobs
-  - *Backup Incremental - Bytes transferred*: Displays a graph with the variation of the bytes transferred by incremental jobs, faced with the variation of the exit status of these jobs
-  - *Backup Incremental - Compression rate*: Displays a graph with the variation of the compression rate by incremental jobs, faced with the variation of the exit status of these jobs
-  - *Backup Incremental - Elapsed time*: Displays a graph with the variation of the elapsed time by incremental jobs, faced with the variation of the exit status of these jobs
-  - *Backup Incremental - Files transferred*: Displays a graph with the variation of the files transferred by incremental jobs, faced with the variation of the exit status of these jobs
-  - *Backup Incremental - Transfer rate*: Displays a graph with the variation of the transfer rate by incremental jobs, faced with the variation of the exit status of these jobs
+  Again, in the same way as the items related to backup jobs, the graphs are divided into the three backup's levels: Full, Differential and Incremental. For each level there are five graphs as described below:
+
+  - *Bytes transferred*: Displays a graph with the variation of the bytes transferred by backup jobs, faced with the variation of the exit status of these jobs
+  - *Compression rate*: Displays a graph with the variation of the compression rate by backup jobs, faced with the variation of the exit status of these jobs
+  - *Elapsed time*: Displays a graph with the variation of the elapsed time by backup jobs, faced with the variation of the exit status of these jobs
+  - *Files transferred*: Displays a graph with the variation of the files transferred by backup jobs, faced with the variation of the exit status of these jobs
+  - *Transfer rate*: Displays a graph with the variation of the transfer rate by backup jobs, faced with the variation of the exit status of these jobs
 
 - **Screens**
 
