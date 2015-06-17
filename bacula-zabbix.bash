@@ -61,12 +61,19 @@ $zabbixSender -z $zabbixSrvAddr -p $zabbixSrvPort -s $baculaClientName -k "bacul
 if [ $? -ne 0 ] ; then return=$(($return+4)) ; fi
 
 # Get from database the time spent by the Job and send it to Zabbix server
-baculaJobTime=$($sql "select timestampdiff(second,StartTime,EndTime) from Job where JobId=$baculaJobId;" 2>/dev/null)
+
+case $baculaDbSgdb in
+  M) baculaJobTime=$($sql "select timestampdiff(second,StartTime,EndTime) from Job where JobId=$baculaJobId;" 2>/dev/null);;
+  P) baculaJobTime=$($sql "select EXTRACT(epoch from (EndTime-StartTime)) from Job where JobId=$baculaJobId;" 2>/dev/null);;
+esac
 $zabbixSender -z $zabbixSrvAddr -p $zabbixSrvPort -s $baculaClientName -k "bacula.$level.job.time" -o $baculaJobTime >/dev/null 2>&1
 if [ $? -ne 0 ] ; then return=$(($return+8)) ; fi
 
 # Get Job speed from database and send it to Zabbix server
-baculaJobSpeed=$($sql "select round(JobBytes/timestampdiff(second,StartTime,EndTime)/1024,2) from Job where JobId=$baculaJobId;" 2>/dev/null)
+case $baculaDbSgdb in
+  M) baculaJobSpeed=$($sql "select round(JobBytes/timestampdiff(second,StartTime,EndTime)) from Job where JobId=$baculaJobId;" 2>/dev/null);;
+  P) baculaJobSpeed=$($sql "select round(JobBytes/EXTRACT(epoch from (EndTime-StartTime))) from Job where JobId=$baculaJobId;" 2>/dev/null);;
+esac
 $zabbixSender -z $zabbixSrvAddr -p $zabbixSrvPort -s $baculaClientName -k "bacula.$level.job.speed" -o $baculaJobSpeed >/dev/null 2>&1
 if [ $? -ne 0 ] ; then return=$(($return+16)) ; fi
 
