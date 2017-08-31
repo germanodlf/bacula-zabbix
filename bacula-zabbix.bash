@@ -46,6 +46,16 @@ if [ -z $baculaClientName ] ; then exit 15 ; fi
 # Initialize return as zero
 return=0
 
+# Backup Start time
+JobStartTime=$($sql "select  Job.StartTime from Client,Job where Job.ClientId=Client.ClientId and Job.JobId=$baculaJobId;" 2>/dev/null)
+$zabbixSender -z $zabbixSrvAddr -p $zabbixSrvPort -s $baculaClientName -k "bacula.$level.job.starttime" -o "${JobStartTime}" >/dev/null 2>&1
+if [ $? -ne 0 ] ; then return=$(($return+2)) ; fi
+
+# Backup End time
+JobEndTime=$($sql "select  Job.EndTime from Client,Job where Job.ClientId=Client.ClientId and Job.JobId=$baculaJobId;" 2>/dev/null)
+$zabbixSender -z $zabbixSrvAddr -p $zabbixSrvPort -s $baculaClientName -k "bacula.$level.job.endtime" -o "${JobEndTime}" >/dev/null 2>&1
+if [ $? -ne 0 ] ; then return=$(($return+2)) ; fi
+
 # Send Job exit status to Zabbix server
 $zabbixSender -z $zabbixSrvAddr -p $zabbixSrvPort -s $baculaClientName -k "bacula.$level.job.status" -o $status >/dev/null 2>&1
 if [ $? -ne 0 ] ; then return=$(($return+1)) ; fi
