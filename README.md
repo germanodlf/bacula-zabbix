@@ -4,6 +4,8 @@ This project is mainly composed by a bash script and a Zabbix template. The bash
 
 Tested with Bacula 9.4.x with PostgreSQL 11 backend and Zabbix 4.0.x on GNU/Linux Debian 9
 
+Tested with Bacula 13.0.x with PostgreSQL 14 backend and Zabbix 6.4.x on GNU/Linux Ubuntu 22.04
+
 ### Abilities
 
 - Customizable and easy to set up
@@ -82,6 +84,8 @@ Link this Zabbix template to each host that has a Bacula's backup job implemente
 - Knowledge about GNU/Linux operational systems
 
 ### Installation
+
+*Note*: If your Bacula uses a config path other than `/etc/bacula` (e.g., Bacula.org builds use `/opt/bacula/etc`), you should set the valid path to `bacula-zabbix.conf` in `bacula-zabbix.bash`.
 
 1. Create the configuration file `/etc/bacula/bacula-zabbix.conf` as the sample in this repository, customize it for your infrastructure environment, and set the permissions as below:
   ```
