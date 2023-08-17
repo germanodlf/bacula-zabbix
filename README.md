@@ -2,6 +2,10 @@
 
 This project is mainly composed by a bash script and a Zabbix template. The bash script reads values from Bacula Catalog and sends it to Zabbix Server. While the Zabbix template has items and other configurations that receive this values, start alerts and generate graphs and screens. This material was created using Bacula at 7.0.5 version and Zabbix at 2.4.5 version in a GNU/Linux CentOS 7 operational system.
 
+Tested with Bacula 9.4.x with PostgreSQL 11 backend and Zabbix 4.0.x on GNU/Linux Debian 9
+
+Tested with Bacula 13.0.x with PostgreSQL 14 backend and Zabbix 6.4.x on GNU/Linux Ubuntu 22.04
+
 ### Abilities
 
 - Customizable and easy to set up
@@ -30,7 +34,7 @@ Link this Zabbix template to each host that has a Bacula's backup job implemente
 - **Items**
 
   This Zabbix template has two types of items, the items to receive data of backup jobs, and the itens to receive data of Bacula's processes. The items that receive data of Bacula's processes are described below:
-  
+
   - *Bacula Director is running*: Get the Bacula Director process status. The process name is defined by the variable {$BACULA.DIR}, and has its default value as 'bacula-dir'. This item needs to be disabled in hosts that are Bacula's clients only.
   - *Bacula Storage is running*: Get the Bacula Storage process status. The process name is defined by the variable {$BACULA.SD}, and has its default value as 'bacula-sd'. This item needs to be disabled in hosts that are Bacula's clients only.
   - *Bacula File is running*: Get the Bacula File process status. The process name is defined by the variable {$BACULA.FD}, and has its default value as 'bacula-fd'.
@@ -81,6 +85,8 @@ Link this Zabbix template to each host that has a Bacula's backup job implemente
 
 ### Installation
 
+*Note*: If your Bacula uses a config path other than `/etc/bacula` (e.g., Bacula.org builds use `/opt/bacula/etc`), you should set the valid path to `bacula-zabbix.conf` in `bacula-zabbix.bash`.
+
 1. Create the configuration file `/etc/bacula/bacula-zabbix.conf` as the sample in this repository, customize it for your infrastructure environment, and set the permissions as below:
   ```
   chown root:bacula /etc/bacula/bacula-zabbix.conf
@@ -103,6 +109,22 @@ Link this Zabbix template to each host that has a Bacula's backup job implemente
   }
   ```
 
+Note that if there is already a mailcommand set then an additional wrapper script has to be used.
+For example if the original mailcommand was:
+  ```
+  mailcommand = "/usr/sbin/bsmtp -h localhost -f \"\(Bacula\) \<bacula@backup-bacula.tokyo.tequila.jp\>\" -s \"Bacula: %t %e of %c (%n) %l\" %r"
+  ```
+then it is necessary to use and external script like the bacula-sender.sh script provided. Put the file into /var/spool/bacula/ and set the permissions as below:
+  ```
+  chown bacula:bacula /var/spool/bacula/bacula-sender.bash
+  chmod 700 /var/spool/bacula/bacula-sender.bash
+  ```
+The file is setup to work with the example mail command from above. Change the Messages mailcommand to
+  ```
+  mailcommand = "/var/spool/bacula/bacula-sender.sh \"%t\" \"%e\" \"%c\" \"%n\" \"%l\" \"%r\" \"%i\""
+  ```
+and leave everthing else the same.
+
 4. Now restart the Bacula Director service. In my case I used this command:
   ```
   systemctl restart bacula-dir
@@ -117,7 +139,9 @@ Link this Zabbix template to each host that has a Bacula's backup job implemente
 - **Bacula**:
 
   - http://www.bacula.org/7.0.x-manuals/en/main
+  - https://www.bacula.org/9.4.x-manuals/en/main/
   - http://www.bacula.com.br/manual/Messages_Resource.html
+  - https://www.bacula.org/9.4.x-manuals/en/main/Messages_Resource.html
   - http://www.bacula-web.org/docs.html
   - http://resources.infosecinstitute.com/data-backups-bacula-notifications
 
